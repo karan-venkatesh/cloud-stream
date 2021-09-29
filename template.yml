@@ -38,7 +38,7 @@ Resources:
           Type: Api
           Properties:
             Path: /path
-            Method: get
+            Method: post
             RestApiId: !Ref SampleApi
 
   SampleApi:
