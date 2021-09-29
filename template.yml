@@ -33,4 +33,15 @@ Resources:
       Timeout: 300
       Policies:
         - AWSLambdaBasicExecutionRole
-      
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /path
+            Method: get
+            RestApiId: !Ref SampleApi
+
+  SampleApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: dev
