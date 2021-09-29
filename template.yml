@@ -1,0 +1,36 @@
+# AWS Hackathon Base Template
+# Version 0.1
+# Author: HIM (red guy with crab claws) - Powerpuff Girls
+
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'The extra ingredient that professor Utonium to make the powerpuff girls super'
+
+#######################################################################################
+#  Parameters
+#######################################################################################
+
+Parameters:
+  EnvironmentPrefix:
+    Description: Descriptions of the vairable
+    Type: String
+    Default: powerpuff-dev
+  
+#######################################################################################
+#  Resources
+#######################################################################################
+
+Resources:
+  HelloWorldLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${EnvironmentPrefix}-hello-world'
+      Description: 'Does something cool I bet'
+      CodeUri: hello-world/
+      Handler: text_sayer.say_message
+      Runtime: python3.7
+      MemorySize: 2056
+      Timeout: 300
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      
