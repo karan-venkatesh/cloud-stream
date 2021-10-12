@@ -8,5 +8,9 @@ def say_message(event,context):
     :param context: An input parameter
     :return: Returning value
     """
-    print("Message is:",event['message'])
-    return {'StatusCode': 200, 'Success': True, 'Message': event['message']}
+
+    if 'message' in event:
+        output_text = event['message']
+    else:
+        output_text = 'Please provide a message to print'
+    return {'statusCode': 200, 'Success': True, 'Message': output_text}
